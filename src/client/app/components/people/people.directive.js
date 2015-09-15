@@ -6,7 +6,9 @@
 		return {
 			restrict: 'E',
 			templateUrl: 'app/components/people/people.html',
-			scope: {},
+			scope: {
+				people: '='
+			},
 			controller: PeopleController,
 			controllerAs: 'vm',
 			// anything that we pass to isolated scope will be bound to vm
@@ -17,17 +19,6 @@
 	PeopleController.$inject = ['dataservice'];
 	function PeopleController(dataservice) {
 		var vm = this;
-		vm.people = [];
-		console.log(vm.people);
-		vm.getPeople = getPeople;
-
-	  	function getPeople() {
-		    dataservice.getPeople()
-		    	.then(function (data) {
-		    		console.log('people');
-			        vm.people = data;
-			        // return vm.people;
-		    	});
-		}
+		
 	}
 })();
